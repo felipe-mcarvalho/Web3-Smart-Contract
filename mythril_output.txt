@@ -1,0 +1,43 @@
+Relatorio Mythril - execucao em Docker
+
+Projeto: EduStake DAO
+Data: 2026-05-19
+Modo de execucao: analise do bytecode compilado pelo Hardhat, utilizando a imagem oficial `mythril/myth`
+
+===== EduToken =====
+- Achado: SWC-101 `Integer Arithmetic Bugs`
+- Severidade reportada pela ferramenta: High
+- Funcoes apontadas: `transfer(address,uint256)` e `mint(address,uint256)`
+- Leitura tecnica: o contrato foi compilado com Solidity `^0.8.x`, que possui verificacao nativa contra overflow e underflow. Nesse contexto, o resultado deve ser lido com cautela e tratado como um alerta conservador da analise em bytecode, e nao como exploracao confirmada.
+
+===== CertificadoNFT =====
+- Resultado: nenhuma vulnerabilidade detectada na execucao realizada
+
+===== EduStaking =====
+- Achado: SWC-123 `Requirement Violation`
+- Severidade reportada pela ferramenta: Medium
+- Leitura tecnica: os casos encontrados apontam caminhos de execucao que terminam em `revert`, o que e compativel com as validacoes de entrada e protecoes esperadas do contrato.
+
+- Achado: SWC-116 `Dependence on predictable environment variable`
+- Severidade reportada pela ferramenta: Low
+- Funcao apontada: `claimReward()`
+- Leitura tecnica: o contrato usa `block.timestamp` para controlar o tempo do staking e o momento de liberar recompensa. Isso exige atencao, mas e um padrao esperado para essa logica.
+
+===== EduGovernance =====
+- Achado: SWC-123 `Requirement Violation`
+- Severidade reportada pela ferramenta: Medium
+- Funcao apontada: `vote(uint256,bool)`
+- Leitura tecnica: o achado representa trilhas com voto invalido ou estado nao permitido, terminando em `revert`, o que esta alinhado com a validacao do contrato.
+
+- Achado: SWC-116 `Dependence on predictable environment variable`
+- Severidade reportada pela ferramenta: Low
+- Funcoes apontadas: `createProposal(string,uint256)` e `vote(uint256,bool)`
+- Leitura tecnica: a governanca usa `block.timestamp` para definir o prazo de votacao. Isso e esperado no modelo atual e deve ser entendido como um ponto de desenho, e nao como falha critica isolada.
+
+===== Resumo Geral =====
+- O `Mythril` foi executado com sucesso em container Docker.
+- Nao apareceu exploracao clara de roubo direto de fundos no fluxo principal do sistema.
+- Os pontos mais relevantes ficaram concentrados em:
+  - leituras conservadoras de aritmetica no ERC-20
+  - uso de `block.timestamp` em staking e governanca
+  - caminhos de `revert` provocados por validacoes de entrada

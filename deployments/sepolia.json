@@ -1,0 +1,10 @@
+{
+  "network": "sepolia",
+  "deployer": "0xE738367883deF5De96aD188cF02409f4d371d5f8",
+  "mockOracle": null,
+  "priceFeedAddress": "0x694AA1769357215DE4FAC081bf1f309aDC325306",
+  "token": "0xAdC4B20Efbb8682bF66B874b2370d1acda44daC1",
+  "nft": "0x5531C4ffF1Cd0E6C27518BCfA32c645e2845ecf5",
+  "staking": "0x7c7810464005F04Fd3Cc8179C56f0097EaC66981",
+  "governance": "0xFE9510182b2D6bf0E86E773a74815927bE19893C"
+}

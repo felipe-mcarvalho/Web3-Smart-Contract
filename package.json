@@ -1,0 +1,22 @@
+{
+  "name": "edustake-dao",
+  "version": "1.0.0",
+  "description": "MVP introdutorio de protocolo Web3 com ERC-20, NFT, staking, governanca e oraculo.",
+  "private": true,
+  "scripts": {
+    "clean": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && set \"APPDATA=%CD%\\.hardhat-roaming\" && set \"LOCALAPPDATA=%CD%\\.hardhat-local\" && node_modules\\.bin\\hardhat.cmd clean",
+    "compile": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && set \"APPDATA=%CD%\\.hardhat-roaming\" && set \"LOCALAPPDATA=%CD%\\.hardhat-local\" && node_modules\\.bin\\hardhat.cmd compile",
+    "test": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && set \"APPDATA=%CD%\\.hardhat-roaming\" && set \"LOCALAPPDATA=%CD%\\.hardhat-local\" && node_modules\\.bin\\hardhat.cmd test",
+    "node": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && set \"APPDATA=%CD%\\.hardhat-roaming\" && set \"LOCALAPPDATA=%CD%\\.hardhat-local\" && node_modules\\.bin\\hardhat.cmd node",
+    "deploy:local": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && set \"APPDATA=%CD%\\.hardhat-roaming\" && set \"LOCALAPPDATA=%CD%\\.hardhat-local\" && node_modules\\.bin\\hardhat.cmd run scripts/deploy.js --network localhost",
+    "deploy:sepolia": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && set \"APPDATA=%CD%\\.hardhat-roaming\" && set \"LOCALAPPDATA=%CD%\\.hardhat-local\" && node_modules\\.bin\\hardhat.cmd run scripts/deploy.js --network sepolia",
+    "demo:local": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && set \"APPDATA=%CD%\\.hardhat-roaming\" && set \"LOCALAPPDATA=%CD%\\.hardhat-local\" && node_modules\\.bin\\hardhat.cmd run scripts/demo.js --network localhost",
+    "demo:sepolia": "set \"PATH=C:\\Program Files\\nodejs;%PATH%\" && set \"APPDATA=%CD%\\.hardhat-roaming\" && set \"LOCALAPPDATA=%CD%\\.hardhat-local\" && node_modules\\.bin\\hardhat.cmd run scripts/demo.js --network sepolia"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.15"
+  }
+}
